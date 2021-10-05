@@ -1,6 +1,6 @@
 # Kurs-Template
 
-[Notebook in JupyterHub öffnen](https://jupyterhubzurich.ch/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fopendatazurich%2Fkurs-crowdsourced-data&subPath=Crowdsourcing-Daten%20nutzen.ipynb&app=notebook)
+[Notebook in JupyterHub öffnen](https://jupyterhubzurich.ch/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2Fopendatazurich%2Fkurs-crowdsourced-data&subPath=Crowdsourcing-Daten%20nutzen.ipynb&app=notebook&branch=main)
 
 **A template for the documentation of a course**
 
