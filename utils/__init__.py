@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 import requests
 import folium
+import osm2geojson
 
 
 def get_layers_from_wfs(wfs_base_url):
