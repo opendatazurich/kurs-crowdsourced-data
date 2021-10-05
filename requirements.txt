@@ -1,0 +1,5 @@
+pandas
+geopandas
+requests
+folium
+osm2geojson
