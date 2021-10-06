@@ -3,3 +3,4 @@ geopandas
 requests
 folium
 osm2geojson
+SPARQLWrapper==1.8.2
