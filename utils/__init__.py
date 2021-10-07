@@ -102,3 +102,16 @@ def img_html(url):
 
 def flatten_dict(d, sep='.'):
     return pd.json_normalize(d, sep=sep).to_dict(orient='records')
+
+def base_map():
+    m = folium.Map(location=[47.38, 8.53], zoom_start=13, tiles=None)
+    folium.raster_layers.WmsTileLayer(
+        url='https://www.ogd.stadt-zuerich.ch/wms/geoportal/Basiskarte_Zuerich_Raster_Grau',
+        layers='Basiskarte Zürich Raster Grau',
+        name='Zürich - Basiskarte',
+        fmt='image/png',
+        overlay=False,
+        control=False,
+        autoZindex=False,
+    ).add_to(m)
+    return m
