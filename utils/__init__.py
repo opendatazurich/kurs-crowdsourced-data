@@ -28,7 +28,17 @@ def get_layers_from_wfs(wfs_base_url):
 def overpass_query(q, endpoint='http://overpass.osm.ch/api/interpreter'):
     r = requests.get(endpoint, params={'data': q})
     r.raise_for_status()
-    return osm2geojson.json2geojson(r.json())
+    osm_gj = osm2geojson.json2geojson(r.json())
+    for f in osm_gj['features']:
+        props = {}
+        for p, v in f['properties'].items():
+            if isinstance(v, dict):
+                for ip, iv in v.items():
+                    props[ip] = iv
+            else:
+                props[p] = v
+        f['properties'] = props
+    return osm_gj
 
 
 def style_layer(geojson, layer, **kwargs):
@@ -49,10 +59,11 @@ def style_layer(geojson, layer, **kwargs):
                 tool_tip_text = tool_tip_text + str(p) + ': ' + str(feature['properties'][p]) + '\n'
             tool_tip_text = tool_tip_text + '\n</pre>'
             tool_tip = folium.Tooltip(tool_tip_text)
-            folium.Marker(location=list(reversed(feature['geometry']['coordinates'])),
-                          icon=folium.Icon(**kwargs),
-                          tooltip=tool_tip
-                          ).add_to(layer)
+            folium.Marker(
+                location=list(reversed(feature['geometry']['coordinates'])),
+                icon=folium.Icon(**kwargs),
+                tooltip=tool_tip
+            ).add_to(layer)
 
 
 def wikidata_query(q, endpoint='https://query.wikidata.org/sparql'):
@@ -61,7 +72,8 @@ def wikidata_query(q, endpoint='https://query.wikidata.org/sparql'):
     sparql.setQuery(q)
     sparql.setReturnFormat(JSON)
     results = sparql.queryAndConvert()
-    return results['results']['bindings']
+    wd_result = results['results']['bindings']
+    return [{k: r[k]['value'] for k,v in r.items()} for r in wd_result]
 
 
 def wikidata_item(item, endpoint='https://www.wikidata.org/w/api.php'):
