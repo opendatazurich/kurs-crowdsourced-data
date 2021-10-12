@@ -21,6 +21,4 @@ Es ist möglich diese Notebooks in eigener Umgebung laufen zu lassen oder eine d
 
 Das Skript des Workshops gibt es auch als PDF:
 
-[![PDF Screenshot](https://user-images.githubusercontent.com/538415/136935939-19fb6bb1-b31e-4b37-9255-7b623d55e36e.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
-
-
+[![PDF Screenshot](https://user-images.githubusercontent.com/538415/136985188-5fe60966-84e7-49de-9322-be903c7e130f.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
