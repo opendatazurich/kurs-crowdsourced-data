@@ -1,6 +1,7 @@
 # Workshop «Crowdsourcing-Daten nutzen»
 
-**URL: [bit.ly/gisforum2021](https://bit.ly/gisforum2021)**
+| **URL:**  | [bit.ly/gisforum2021](https://bit.ly/gisforum2021)  |
+|-----------|-----------------------------------------------------|
 
 # Jupyter Notebook
 
