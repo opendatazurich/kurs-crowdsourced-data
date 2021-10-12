@@ -1,5 +1,7 @@
 # Workshop «Crowdsourcing-Daten nutzen»
 
+**URL: [bit.ly/gisforum2021](https://bit.ly/gisforum2021)**
+
 # Jupyter Notebook
 
 Dieser Workshop wird in Form eines [Jupyter Notebooks](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/Crowdsourcing-Daten%20nutzen.ipynb) durchgeführt.
