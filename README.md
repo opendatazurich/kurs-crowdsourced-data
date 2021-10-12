@@ -1,11 +1,13 @@
 # Workshop «Crowdsourcing-Daten nutzen»
 
-
-
 # Jupyter Notebook
 
-Dieser Workshop wird in Form eines Jupyter Notebooks durchgeführt.
+Dieser Workshop wird in Form eines [Jupyter Notebooks](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/Crowdsourcing-Daten%20nutzen.ipynb) durchgeführt.
 Jupyter Notebooks bieten eine Programmierumgebung im Browser.
+Wir arbeiten dabei mit der Programmiersprache Python.
+
+Erfahrung mit Python ist von Vorteil beim Lesen des Codes, ist aber keine Voraussetzung.
+Der Code lässt sich auch einfach in einer anderen Skriptsprache implementieren (z.B. R).
 
 Es ist möglich diese Notebooks in eigener Umgebung laufen zu lassen oder eine der zur Verfügung gestellten Umgebungen zu nutzen:
 
@@ -16,6 +18,6 @@ Es ist möglich diese Notebooks in eigener Umgebung laufen zu lassen oder eine d
 
 Das Skript des Workshops gibt es auch als PDF:
 
-[![grafik](https://user-images.githubusercontent.com/538415/136935939-19fb6bb1-b31e-4b37-9255-7b623d55e36e.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
+[![PDF Screenshot](https://user-images.githubusercontent.com/538415/136935939-19fb6bb1-b31e-4b37-9255-7b623d55e36e.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
 
 
