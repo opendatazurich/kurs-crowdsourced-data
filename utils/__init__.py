@@ -4,6 +4,7 @@ import folium
 import osm2geojson
 from SPARQLWrapper import SPARQLWrapper, JSON
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def get_layers_from_wfs(wfs_base_url):
@@ -67,13 +68,19 @@ def style_layer(geojson, layer, **kwargs):
 
 
 def wikidata_query(q, endpoint='https://query.wikidata.org/sparql'):
+    return sparql_query(q, endpoint)
+
+def geoadmin_query(q, endpoint='https://ld.geo.admin.ch/query'):
+    return sparql_query(q, endpoint)
+
+def sparql_query(q, endpoint):
     agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     sparql = SPARQLWrapper(endpoint, agent=agent)
     sparql.setQuery(q)
     sparql.setReturnFormat(JSON)
     results = sparql.queryAndConvert()
-    wd_result = results['results']['bindings']
-    return [{k: r[k]['value'] for k,v in r.items()} for r in wd_result]
+    sparql_result = results['results']['bindings']
+    return [{k: r[k]['value'] for k,v in r.items()} for r in sparql_result]
 
 
 def wikidata_item(item, endpoint='https://www.wikidata.org/w/api.php'):
@@ -115,8 +122,8 @@ def img_html(url):
 def flatten_dict(d, sep='.'):
     return pd.json_normalize(d, sep=sep).to_dict(orient='records')
 
-def base_map():
-    m = folium.Map(location=[47.38, 8.53], zoom_start=13, tiles=None)
+def base_map(location=[47.38, 8.53], zoom=13):
+    m = folium.Map(location=location, zoom_start=zoom, tiles=None)
     folium.raster_layers.WmsTileLayer(
         url='https://www.ogd.stadt-zuerich.ch/wms/geoportal/Basiskarte_Zuerich_Raster_Grau',
         layers='Basiskarte Zürich Raster Grau',
@@ -127,3 +134,7 @@ def base_map():
         autoZindex=False,
     ).add_to(m)
     return m
+
+def use_style(style):
+    plt.style.use('default')
+    plt.style.use(style)
