@@ -14675,9 +14675,27 @@ div.jp-OutputPrompt {
 <span class="kn">import</span> <span class="nn">folium</span>
 <span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">display</span><span class="p">,</span> <span class="n">display_javascript</span>
 
 <span class="kn">import</span> <span class="nn">utils</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Inhalt von utils anschauen </span>
+<span class="c1">#%pycat utils/__init__.py</span>
 </pre></div>
 
      </div>
@@ -14710,8 +14728,8 @@ Dazu laden wir uns zuerst den Datensatz «Kunst im öffentlichen Raum» via WFS.
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Daten-finden">Daten finden<a class="anchor-link" href="#Daten-finden">&#182;</a></h2><p><a href="https://data.stadt-zuerich.ch/dataset?q=kunst+im+%C3%B6ffentlichen+raum">Via OGD-Portal</a> finden wir den Datensatz <a href="https://data.stadt-zuerich.ch/dataset/geo_kunst_im_stadtraum">Kunst im Stadtraum</a>.
-Von dort via GeoJSON auf das <a href="https://www.stadt-zuerich.ch/geodaten/download/Kunst_im_Stadtraum?format=10009">Geoportal</a> zur richtigen URL.</p>
+<h2 id="Daten-finden">Daten finden<a class="anchor-link" href="#Daten-finden">&#182;</a></h2><p>Auf dem <a href="https://data.stadt-zuerich.ch/">Open-Data-Katalog</a> finden wir den Datensatz <a href="https://data.stadt-zuerich.ch/dataset/geo_kunst_im_stadtraum">Kunst im Stadtraum</a>.
+Wenn wir den Datensatz als GeoJSON herunterladen wollen, werden wir entsprechend zum <a href="https://www.stadt-zuerich.ch/geodaten/download/Kunst_im_Stadtraum?format=10009">Geoportal</a> weitergeleitet.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15178,7 +15196,7 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="SPARQL-Query-absetzen">SPARQL-Query absetzen<a class="anchor-link" href="#SPARQL-Query-absetzen">&#182;</a></h3><p><a href="https://w.wiki/4Cep">Link zum Wikidata Query Service</a></p>
+<h3 id="WikiData-SPARQL-Query-absetzen">WikiData SPARQL-Query absetzen<a class="anchor-link" href="#WikiData-SPARQL-Query-absetzen">&#182;</a></h3><p><a href="https://w.wiki/4Cep">Link zum Wikidata Query Service</a></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15222,7 +15240,7 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Result-als-GeoDataFrame">Result als GeoDataFrame<a class="anchor-link" href="#Result-als-GeoDataFrame">&#182;</a></h3>
+<h3 id="WikiData-Resultat-als-GeoDataFrame">WikiData-Resultat als GeoDataFrame<a class="anchor-link" href="#WikiData-Resultat-als-GeoDataFrame">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -15277,7 +15295,7 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Resultat-auf-Karte-darstellen">Resultat auf Karte darstellen<a class="anchor-link" href="#Resultat-auf-Karte-darstellen">&#182;</a></h3>
+<h3 id="WikiData-Items-auf-Karte-darstellen">WikiData-Items auf Karte darstellen<a class="anchor-link" href="#WikiData-Items-auf-Karte-darstellen">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -15325,6 +15343,233 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Exkurs:-Daten-von-geo.admin.ch-via-SPARQL-beziehen">Exkurs: Daten von geo.admin.ch via SPARQL beziehen<a class="anchor-link" href="#Exkurs:-Daten-von-geo.admin.ch-via-SPARQL-beziehen">&#182;</a></h1><p>Nachdem wir oben gesehen haben, dass wir (Geo-)Daten via SPARQL beziehen können, gibt der folgende Exkurs einen kleinen Einblick in die <a href="https://www.geo.admin.ch/de/geo-dienstleistungen/geodienste/linkeddata.html">Geodaten von geo.admin.ch, welche als Linked Data zur Verfügung gestellt werden</a>.</p>
+<p>Diese umfassen u.a.:</p>
+<ul>
+<li>swissBOUNDARIES 3D</li>
+<li>Haltestellen des öffentlichen Verkehrs</li>
+<li>Generalisierte Grenzen G1</li>
+<li>Strassenverkehrsunfallorte</li>
+</ul>
+<p>Wir wollen nun am Beispiel von swissBOUNDARIES zeigen, wie wir eine (stets aktuelle) Liste von Schweizer Gemeinden beziehen können.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="SPARQL-Query-f%C3%BCr-CH-Gemeinden">SPARQL Query f&#252;r CH-Gemeinden<a class="anchor-link" href="#SPARQL-Query-f%C3%BCr-CH-Gemeinden">&#182;</a></h2><p><a href="https://ld.geo.admin.ch/sparql/#query=PREFIX+xsd%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0APREFIX+rdf%3A+%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+gn%3A+%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0APREFIX+ch%3A+%3Chttps%3A%2F%2Fld.geo.admin.ch%2Fdef%2F%3E%0APREFIX+dct%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0APREFIX+geosparql%3A+%3Chttp%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23%3E%0A%0ASELECT+%3FbfsNummer+%3FGemeindeName+%3FRegionName+%3FKantonName+%3FBevoelkerung+%3FgeoWKT%0AWHERE%0A%7B%0A++%3FAdminArea+rdf%3Atype+schema%3AAdministrativeArea+.%0A++%3FAdminArea+dct%3AhasVersion+%3FGemeinde+.%0A++%3FGemeinde+gn%3AfeatureCode+gn%3AA.ADM3+.%0A++%3FGemeinde+schema%3Aname+%3FGemeindeName+.%0A++%3FGemeinde+ch%3AbfsNumber+%3FbfsNummer+.%0A++%3FGemeinde+gn%3AparentADM1+%3FKanton+.%0A++%3FKanton+schema%3Aname+%3FKantonName+.%0A++%3FGemeinde+dct%3Aissued+%3FDatum+.%0A++%3FGemeinde+schema%3AvalidUntil+%3FValidDatum+.%0A++%3FGemeinde+gn%3Apopulation+%3FBevoelkerung+.+%0A++%3FGemeinde+geosparql%3AhasGeometry%2Fgeosparql%3AasWKT+%3FgeoWKT+.%0A++%0A++OPTIONAL+%7B%0A++++%3FGemeinde+gn%3AparentADM2+%3FRegion+.%0A++++%3FRegion+schema%3Aname+%3FRegionName+.%0A++%7D%0A++%0A++%23+Filter+auf+die+aktuellste%2C+g%C3%BCltige+Version%0A++FILTER+(%3FValidDatum+%3E%3D+xsd%3Adate(NOW(">SPARQL Query auf ld.geo.admin.ch ausführen</a>))%0A++FILTER+NOT+EXISTS+%7B+%0A++++++%3FAdminArea+dct%3AhasVersion%2Fdct%3Aissued+%3FAusstellDatum%0A++++++filter+(%3FAusstellDatum+%3E+%3FDatum)%0A++%7D%0A%7D%0AORDER+BY+ASC(%3FGemeindeName)%0ALIMIT+3000&amp;contentTypeConstruct=application%2Frdf%2Bjson&amp;contentTypeSelect=application%2Fsparql-results%2Bjson&amp;endpoint=https%3A%2F%2Fld.geo.admin.ch%2Fquery&amp;requestMethod=POST&amp;tabTitle=Query&amp;headers=%7B%7D&amp;outputFormat=table)</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gemeinde_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+<span class="s2">PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span>
+<span class="s2">PREFIX schema: &lt;http://schema.org/&gt;</span>
+<span class="s2">PREFIX gn: &lt;http://www.geonames.org/ontology#&gt;</span>
+<span class="s2">PREFIX ch: &lt;https://ld.geo.admin.ch/def/&gt;</span>
+<span class="s2">PREFIX dct: &lt;http://purl.org/dc/terms/&gt;</span>
+<span class="s2">PREFIX geosparql: &lt;http://www.opengis.net/ont/geosparql#&gt;</span>
+
+<span class="s2">SELECT ?bfsNummer ?GemeindeName ?RegionName ?KantonName ?Bevoelkerung ?geoWKT</span>
+<span class="s2">WHERE</span>
+<span class="s2">{</span>
+<span class="s2">  ?AdminArea rdf:type schema:AdministrativeArea .</span>
+<span class="s2">  ?AdminArea dct:hasVersion ?Gemeinde .</span>
+<span class="s2">  ?Gemeinde gn:featureCode gn:A.ADM3 .</span>
+<span class="s2">  ?Gemeinde schema:name ?GemeindeName .</span>
+<span class="s2">  ?Gemeinde ch:bfsNumber ?bfsNummer .</span>
+<span class="s2">  ?Gemeinde gn:parentADM1 ?Kanton .</span>
+<span class="s2">  ?Kanton schema:name ?KantonName .</span>
+<span class="s2">  ?Gemeinde dct:issued ?Datum .</span>
+<span class="s2">  ?Gemeinde schema:validUntil ?ValidDatum .</span>
+<span class="s2">  ?Gemeinde gn:population ?Bevoelkerung . </span>
+<span class="s2">  ?Gemeinde geosparql:hasGeometry/geosparql:asWKT ?geoWKT .</span>
+<span class="s2">  </span>
+<span class="s2">  OPTIONAL {</span>
+<span class="s2">    ?Gemeinde gn:parentADM2 ?Region .</span>
+<span class="s2">    ?Region schema:name ?RegionName .</span>
+<span class="s2">  }</span>
+<span class="s2">  </span>
+<span class="s2">  # Filter auf die aktuellste, gültige Version</span>
+<span class="s2">  FILTER (?ValidDatum &gt;= xsd:date(NOW()))</span>
+<span class="s2">  FILTER NOT EXISTS { </span>
+<span class="s2">      ?AdminArea dct:hasVersion/dct:issued ?AusstellDatum</span>
+<span class="s2">      filter (?AusstellDatum &gt; ?Datum)</span>
+<span class="s2">  }</span>
+<span class="s2">}</span>
+<span class="s2">ORDER BY ASC(?GemeindeName)</span>
+<span class="s2">LIMIT 3000</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">gde_result</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">geoadmin_query</span><span class="p">(</span><span class="n">gemeinde_query</span><span class="p">)</span>
+<span class="n">gde_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">gde_result</span><span class="p">)</span>
+<span class="n">gde_df</span><span class="o">.</span><span class="n">bfsNummer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">gde_df</span><span class="o">.</span><span class="n">bfsNummer</span><span class="p">)</span>
+<span class="n">gde_df</span><span class="o">.</span><span class="n">Bevoelkerung</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">gde_df</span><span class="o">.</span><span class="n">Bevoelkerung</span><span class="p">)</span>
+<span class="n">gde_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Gemeinden-als-GeoDataFrame">Gemeinden als GeoDataFrame<a class="anchor-link" href="#Gemeinden-als-GeoDataFrame">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gde_gdf</span> <span class="o">=</span> <span class="n">geopandas</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">gde_df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">geopandas</span><span class="o">.</span><span class="n">GeoSeries</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="n">gde_df</span><span class="o">.</span><span class="n">geoWKT</span><span class="p">))</span>
+<span class="n">gde_gdf</span> <span class="o">=</span> <span class="n">gde_gdf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geoWKT&#39;</span><span class="p">])</span>
+<span class="n">gde_gdf</span> <span class="o">=</span> <span class="n">gde_gdf</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="n">wgs84</span><span class="p">)</span>
+<span class="n">gde_gdf</span> <span class="o">=</span> <span class="n">gde_gdf</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gde_gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Visualisierungs-Beispiele">Visualisierungs-Beispiele<a class="anchor-link" href="#Visualisierungs-Beispiele">&#182;</a></h2><p>Im folgenden noch ein paar Beispiele, wie diese Daten visualisiert werden können.</p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Gemeindegrenzen-auf-Karte-darstellen">Gemeindegrenzen auf Karte darstellen<a class="anchor-link" href="#Gemeindegrenzen-auf-Karte-darstellen">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gemeinde_map</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">base_map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">46.25</span><span class="p">,</span> <span class="mf">8.53</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
+    <span class="n">gde_gdf</span><span class="o">.</span><span class="n">to_json</span><span class="p">(),</span>
+    <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;#17a0c2&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#17a0c2&#39;</span><span class="p">},</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">GeoJsonTooltip</span><span class="p">(</span>
+        <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GemeindeName&#39;</span><span class="p">,</span> <span class="s1">&#39;Bevoelkerung&#39;</span><span class="p">,</span> <span class="s1">&#39;bfsNummer&#39;</span><span class="p">],</span>
+        <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Gemeinde:&#39;</span><span class="p">,</span> <span class="s1">&#39;Bevölkerung:&#39;</span><span class="p">,</span> <span class="s2">&quot;BFS Nummer:&quot;</span><span class="p">],</span>                      
+    <span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">gemeinde_map</span><span class="p">)</span>
+<span class="n">gemeinde_map</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="10-gr%C3%B6sste-St%C3%A4dte">10 gr&#246;sste St&#228;dte<a class="anchor-link" href="#10-gr%C3%B6sste-St%C3%A4dte">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">use_style</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">top10</span> <span class="o">=</span> <span class="n">gde_gdf</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Bevoelkerung&#39;</span><span class="p">])</span>
+<span class="n">top10</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Bevoelkerung&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;GemeindeName&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bevölkerung&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Bevölkerung&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Gemeinde&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">ticker</span><span class="o">.</span><span class="n">EngFormatter</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Bev%C3%B6lkerungswachstum-in-Z%C3%BCrich">Bev&#246;lkerungswachstum in Z&#252;rich<a class="anchor-link" href="#Bev%C3%B6lkerungswachstum-in-Z%C3%BCrich">&#182;</a></h3><p>Um das Bevölkerungswachstum zu visualisieren, holen wir zuerst die <a href="https://ld.geo.admin.ch/sparql/#query=PREFIX+schema%3A+%3Chttp%3A%2F%2Fschema.org%2F%3E%0APREFIX+gn%3A+%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0APREFIX+dct%3A+%3Chttp%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%3E%0A%0ASELECT+%3FGemeindeName+%3FValidDatum+%3FBevoelkerung+%3FGemeinde%0AWHERE%0A%7B%0A++VALUES+%3FAdminArea+%7B+%3Chttps%3A%2F%2Fld.geo.admin.ch%2Fboundaries%2Fmunicipality%2F261%3E+%7D+%23+Z%C3%BCrich%0A++%3FAdminArea+dct%3AhasVersion+%3FGemeinde+.%0A++%3FGemeinde+schema%3Aname+%3FGemeindeName+.%0A++%3FGemeinde+schema%3AvalidUntil+%3FValidDatum+.%0A++%3FGemeinde+gn%3Apopulation+%3FBevoelkerung+.%0A%7D%0AORDER+BY+ASC(%3FValidDatum">Bevölkerungszahlen (gemäss BFS-Definition) von Zürich</a>%0ALIMIT+100&amp;contentTypeConstruct=text%2Fturtle&amp;contentTypeSelect=application%2Fsparql-results%2Bjson&amp;endpoint=https%3A%2F%2Fld.geo.admin.ch%2Fquery&amp;requestMethod=POST&amp;tabTitle=Query+3&amp;headers=%7B%7D&amp;outputFormat=table).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bev_zurich_query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">PREFIX schema: &lt;http://schema.org/&gt;</span>
+<span class="s2">PREFIX gn: &lt;http://www.geonames.org/ontology#&gt;</span>
+<span class="s2">PREFIX dct: &lt;http://purl.org/dc/terms/&gt;</span>
+
+<span class="s2">SELECT ?GemeindeName ?ValidDatum ?Bevoelkerung</span>
+<span class="s2">WHERE</span>
+<span class="s2">{</span>
+<span class="s2">  VALUES ?AdminArea { &lt;https://ld.geo.admin.ch/boundaries/municipality/261&gt; } # Zürich</span>
+<span class="s2">  ?AdminArea dct:hasVersion ?Gemeinde .</span>
+<span class="s2">  ?Gemeinde schema:name ?GemeindeName .</span>
+<span class="s2">  ?Gemeinde schema:validUntil ?ValidDatum .</span>
+<span class="s2">  ?Gemeinde gn:population ?Bevoelkerung .</span>
+<span class="s2">}</span>
+<span class="s2">ORDER BY ASC(?ValidDatum)</span>
+<span class="s2">LIMIT 100</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">zh_result</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">geoadmin_query</span><span class="p">(</span><span class="n">bev_zurich_query</span><span class="p">)</span>
+<span class="n">zh_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zh_result</span><span class="p">)</span>
+<span class="n">zh_df</span><span class="o">.</span><span class="n">Bevoelkerung</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">zh_df</span><span class="o">.</span><span class="n">Bevoelkerung</span><span class="p">)</span>
+<span class="n">zh_df</span><span class="o">.</span><span class="n">ValidDatum</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">zh_df</span><span class="o">.</span><span class="n">ValidDatum</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">zh_df</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">use_style</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">zh_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Bevoelkerung&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;ValidDatum&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bevölkerung&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">450_000</span><span class="p">)</span> <span class="c1"># immer bei 0 starten</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Bevölkerung&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Jahr&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Anhang-und-Tutorials">Anhang und Tutorials<a class="anchor-link" href="#Anhang-und-Tutorials">&#182;</a></h1><h2 id="OpenStreetMap-(OSM)">OpenStreetMap (OSM)<a class="anchor-link" href="#OpenStreetMap-(OSM)">&#182;</a></h2><ul>
 <li><a href="https://wiki.openstreetmap.org/wiki/DE:Hauptseite">OpenStreetMap Wiki</a><ul>
 <li><a href="https://wiki.openstreetmap.org/wiki/DE:Tag:tourism%3Dartwork">tourism=artwork</a></li>
@@ -15336,7 +15581,11 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 <li><a href="https://overpass-turbo.osm.ch/">Overpass Turbo Schweiz</a></li>
 </ul>
 </li>
-<li><a href="https://openschoolmaps.ch/">OpenSchoolMaps</a>: Unterrichtsmaterial inkl. Einsteigerhilfe zu OpenStreetMap</li>
+<li><a href="https://openschoolmaps.ch/">OpenSchoolMaps</a>: Unterrichtsmaterial inkl. Einsteigerhilfe zu OpenStreetMap<ul>
+<li><a href="https://openschoolmaps.ch/lehrmittel/osm_bearbeiten/02_osm-daten_beziehen.pdf">OpenStreetMap-Daten beziehen und mit QGIS 3 nutzen (Overpass, QuickOSM-Plugin)</a></li>
+<li><a href="https://openschoolmaps.ch/lehrmittel/weitere_qgis-themen/vektordaten-analyse_mit_qgis/vektordaten-analyse_mit_qgis_autobahn.pdf">Raumanalyse Vektordaten - Folgen-Abschätzung eines Autobahn-Baus mit QGIS</a></li>
+</ul>
+</li>
 <li><a href="https://learnosm.org/de/">learnOSM</a>: Schritt-für-Schritt-Anleitungen</li>
 </ul>
 <h2 id="WikiData">WikiData<a class="anchor-link" href="#WikiData">&#182;</a></h2><ul>
@@ -15348,6 +15597,20 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 </ul>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div></section></section>
 </div>
 </div>
