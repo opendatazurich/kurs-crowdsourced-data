@@ -17,7 +17,7 @@ Es ist möglich diese Notebooks in eigener Umgebung laufen zu lassen oder Google
 
 Das Skript des Workshops gibt es auch als PDF:
 
-[![PDF Screenshot](https://user-images.githubusercontent.com/538415/136985188-5fe60966-84e7-49de-9322-be903c7e130f.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
+[![PDF Screenshot](https://user-images.githubusercontent.com/538415/140325063-2b5f5828-37bc-4c00-8f73-a353af49d3b4.png)](https://github.com/opendatazurich/kurs-crowdsourced-data/blob/main/files/Crowdsourcing-Daten%20nutzen.pdf)
 
 # Folien
 
