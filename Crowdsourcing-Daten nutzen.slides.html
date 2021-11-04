@@ -14638,7 +14638,6 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Crowdsouring-Daten-nutzen">Crowdsouring-Daten nutzen<a class="anchor-link" href="#Crowdsouring-Daten-nutzen">&#182;</a></h1><p>Daten aus OpenStreetMap (OSM) und WikiData zusammen mit städtischen Daten nutzen</p>
-<p><span style="color: green; font-size: 150%">**Jupyter-Notebook laden: <a style="color: darkgreen" href="https://bit.ly/gisforum2021">bit.ly/gisforum2021</a>**</span></p>
 
 </div>
 </div></section></section><section><section>
@@ -14769,7 +14768,7 @@ Wenn wir den Datensatz als GeoJSON herunterladen wollen, werden wir entsprechend
     <span class="s1">&#39;typename&#39;</span><span class="p">:</span> <span class="n">kioer_layer</span><span class="p">,</span>
     <span class="s1">&#39;outputFormat&#39;</span><span class="p">:</span> <span class="s1">&#39;GeoJSON&#39;</span>
 <span class="p">})</span>
-
+ 
 <span class="n">kioer_geo</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="n">display</span><span class="p">(</span><span class="n">kioer_geo</span><span class="p">)</span>
 </pre></div>
@@ -15224,7 +15223,7 @@ Es beinhaltet strukturierte Daten, welche via API abgefragt werden können (REST
 <span class="s2">  SERVICE wikibase:label {</span>
 <span class="s2">    bd:serviceParam wikibase:language &quot;[AUTO_LANGUAGE],de,en&quot;</span>
 <span class="s2">  }</span>
-<span class="s2">}</span>
+<span class="s2">} </span>
 <span class="s2">ORDER BY ?artworkLabel</span>
 <span class="s2">&quot;&quot;&quot;</span>
 <span class="n">wd_result</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wikidata_query</span><span class="p">(</span><span class="n">wd_kunstwerke_query</span><span class="p">)</span>
